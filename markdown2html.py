@@ -9,27 +9,6 @@ import re
 from time import sleep
 
 
-def perror(*args, **kwargs):
-    """
-    Printing to STDERR file descriptor.
-    """
-    print(*args, file=stderr, **kwargs)
-
-
-if __name__ == "__main__":
-
-    if len(argv) < 3:
-        perror("Usage: ./markdown2html.py README.md README.html")
-        # perror("Usage: ./markdown2html.py README.md README.html [-s]")
-        exit(1)
-
-    if exists(argv[1]) is False:
-        perror("Missing {}".format(argv[1]))
-        exit(1)
-
-    mark2html(*argv)
-
-
 def h(line):
     """
     Creates a heading html element
@@ -199,3 +178,24 @@ def mark2html(*argv):
         f.write(text)
 
     exit(0)
+
+
+def perror(*args, **kwargs):
+    """
+    Printing to STDERR file descriptor.
+    """
+    print(*args, file=stderr, **kwargs)
+
+
+if __name__ == "__main__":
+
+    if len(argv) < 3:
+        perror("Usage: ./markdown2html.py README.md README.html")
+        # perror("Usage: ./markdown2html.py README.md README.html [-s]")
+        exit(1)
+
+    if exists(argv[1]) is False:
+        perror("Missing {}".format(argv[1]))
+        exit(1)
+
+    mark2html(*argv)
